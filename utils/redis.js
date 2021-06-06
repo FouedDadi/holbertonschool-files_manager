@@ -20,7 +20,7 @@ class RedisClient {
   }
 
   async set(K, V, D) {
-    this.client.set(K, D, V);
+    this.client.setex(K, D, V);
   }
 
   async del(K) {
