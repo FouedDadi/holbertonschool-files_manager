@@ -8,10 +8,10 @@ class DBClient {
     MongoClient.connect(
       `mongodb://${HOST}:${PORT}`,
       { useUnifiedTopology: true },
-      (err, usr) => {
+      function (err, usr) {
         if (err) throw console.error(err);
         this.database = usr.db(DB);
-      }
+      },
     );
   }
 
