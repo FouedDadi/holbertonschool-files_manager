@@ -11,7 +11,7 @@ class DBClient {
       (err, usr) => {
         if (err) throw console.error(err);
         this.database = usr.db(DB);
-      },
+      }
     );
   }
 
@@ -20,13 +20,13 @@ class DBClient {
   }
 
   async nbUsers() {
-    const usrs = await this.database.collection('users').countDocuments();
-    return usrs;
+    this.usrs = this.database.collection('users');
+    return this.usrs.countDocuments();
   }
 
   async nbFiles() {
-    const files = await this.database.collection('files').countDocuments();
-    return files;
+    this.files = this.database.collection('files');
+    return this.files.countDocuments();
   }
 }
 const dbClient = new DBClient();
