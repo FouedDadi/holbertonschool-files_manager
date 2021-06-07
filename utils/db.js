@@ -5,11 +5,10 @@ class DBClient {
     const PORT = process.env.DB_PORT || 27017;
     const HOST = process.env.DB_HOST || 'localhost';
     const DB = process.env.DB_DATABASE || 'files_manager';
-    const URL = `mongodb://${HOST}:${PORT}`;
     MongoClient.connect(
-      URL,
+      `mongodb://${HOST}:${PORT}`,
       { useUnifiedTopology: true },
-      function clconnect(err, usr) {
+      (err, usr) => {
         if (err) throw console.error(err);
         this.database = usr.db(DB);
       },
