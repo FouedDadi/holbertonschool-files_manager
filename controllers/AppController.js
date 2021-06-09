@@ -1,15 +1,14 @@
 import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
 
-const getStatus = function sts(req, res) {
+export const getStatus = function sts(req, res) {
   const redis = redisClient.isAlive();
   const db = dbClient.isAlive();
-  res.status(200).send({ redis, db });
+  res.send({ redis, db });
 };
 
-const getStats = async function stt(req, res) {
+export const getStats = async function stt(req, res) {
   const users = await dbClient.nbUsers();
   const files = await dbClient.nbFiles();
-  res.status(200).send({ users, files });
+  res.send({ users, files });
 };
-export default { getStatus, getStats };
