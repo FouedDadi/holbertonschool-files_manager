@@ -10,4 +10,3 @@ App.listen(PORT, () => {
   console.log(`Example app listening at ${PORT}`);
 });
 App.use(router);
-module.exports = App;
