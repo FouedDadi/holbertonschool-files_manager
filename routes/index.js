@@ -2,9 +2,9 @@ import { getStats, getStatus } from '../controllers/AppController';
 
 const express = require('express');
 
-const routes = express.Router();
+const router = express.Router();
 
-routes.get('/status', getStatus);
-routes.get('/stats', getStats);
+router.get('/status', getStatus);
+router.get('/stats', getStats);
 
-export default routes;
+export default router;
