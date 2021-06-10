@@ -11,7 +11,7 @@ class DBClient {
       (err, usr) => {
         if (err) throw console.error(err);
         this.database = usr.db(DB);
-      },
+      }
     );
   }
 
