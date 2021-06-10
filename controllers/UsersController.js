@@ -5,16 +5,16 @@ const postNew = async function pstnw(request, result) {
   const { email } = request.body;
   const { password } = request.body;
   if (!email) {
-    result.status(400).send(JSON.stringify('Missing email'));
+    result.status(400).send(JSON.stringify({ error: 'Missing email' }));
   }
   if (!password) {
-    result.status(400).send(JSON.stringify('Missing password'));
+    result.status(400).send(JSON.stringify({ error: 'Missing password' }));
   }
   const emailexst = await dbClient.client
     .collection('users')
     .findOne({ email });
   if (emailexst) {
-    return result.status(400).send(JSON.stringify('Already exist'));
+    return result.status(400).send({ error: 'Already exist' });
   }
   const hashedpasswrd = sha1(password);
 
