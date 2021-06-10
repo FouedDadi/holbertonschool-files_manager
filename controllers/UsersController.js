@@ -1,9 +1,9 @@
 import sha1 from 'sha1';
 import dbClient from '../utils/db';
 
-export const postNew = async function pstnw(request, result) {
-  const { email } = request.body;
-  const { password } = request.body;
+const postNew = async function pstnw(request, result) {
+  const { email } = request.body.email;
+  const { password } = request.body.password;
   if (!email) {
     result.status(400).send(JSON.stringify({ error: 'Missing email' }));
   }
@@ -22,3 +22,4 @@ export const postNew = async function pstnw(request, result) {
   const generatedid = newusr.insertedId();
   return result.status(201).json({ email, generatedid });
 };
+export default postNew;
